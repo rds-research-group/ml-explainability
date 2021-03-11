@@ -7,7 +7,7 @@ Shared drive files [here](https://drive.google.com/drive/folders/17yneYJ8NzbSN5t
 1. Check to see singularity is installed `which singularity`
 2. Check version `singularity version`
 3. Copy the gzipped overlay image into your `home/<NET_ID>` directory `cp -rp /scratch/work/public/overlay-fs-ext3/overlay-5GB-200K.ext3.gz .`
-4. Unzip image `gunzip overlay-5GB-200K.ext3.gz
+4. Unzip image `gunzip overlay-5GB-200K.ext3.gz`
 5. Launch container interactively `singularity exec --overlay overlay-5GB-200K.ext3 /scratch/work/public/singularity/cuda11.0-cudnn8-devel-ubuntu18.04.sif /bin/bash`
 6. Inside container, install miniconda into /ext3/miniconda3 `wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh`
    1. `sh Miniconda3-latest-Linux-x86_64.sh -b -p /ext3/miniconda3`

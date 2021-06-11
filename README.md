@@ -34,3 +34,10 @@ Shared drive files [here](https://drive.google.com/drive/folders/17yneYJ8NzbSN5t
 1. In container run `jupyter notebook --no-browser --port 8870`
 2. On local machine run `ssh -NfL 8870:localhost:8870 <NET_ID>@greene.hpc.nyu.edu`
 3. Open brower tab with localhost address/port (in container log statements)
+
+### Running jobs on HPC
+
+1. Login to HPC
+2. `git clone git@github.com:rds-research-group/ml-explainability.git`
+3. `cd ml-explainability`
+4. `./scripts/run_job.sh <EMAIL> <NOTEBOOK_FILE> <JOB_TIME>`

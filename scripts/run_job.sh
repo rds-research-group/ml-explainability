@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 echo "****** Getting latest changes from GitHub ******"
 git pull --ff-only origin main
 
@@ -10,12 +10,22 @@ pip install --no-index --upgrade pip
 pip install -U jupyter
 
 echo "****** Convert notebook file to script ******"
-jupyter nbconvert --to script ./$2.ipynb
+jupyter nbconvert --to script $HOME/scripts/$2.ipynb
 
-echo "****** Starting slurm batch job ******"
+echo "****** Starting postgres slurm job ******"
+cd $SCRATCH
+mkdir -p logs
+
+sbatch --mail-user=$1 --time=$3 --output=$SCRATCH/logs/postgres-%J.log postgresql.sbatch
+
+echo "****** Starting jupyter notebook slurm job ******"
+cd -
+mkdir -p logs
+
 sbatch <<EOT
-#!/bin/sh
+#!/bin/bash
 
+#SBATCH --job-name=jupyter
 #SBATCH --mail-user=$1
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --nodes=1
@@ -23,12 +33,12 @@ sbatch <<EOT
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=64GB
 #SBATCH --time=$3
-#SBATCH --output=/scripts/logs/jupyter-notebook-%J.log
+#SBATCH --output=$HOME/scripts/logs/jupyter-notebook-%J.log
 
 module purge
 module load python/intel/3.8.6
 
 pip install --no-index --upgrade pip
 pip install --no-index -r requirements.txt
-python ./$2.py
+python $HOME/scripts/$2.py
 EOT

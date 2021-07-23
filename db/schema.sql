@@ -1,32 +1,27 @@
 SET timezone = 'America/New_York';
 
-CREATE TYPE model_type_enum AS ENUM (
-    'linear_regression', 'decision_tree', 'random_forest', 'xgboost'
-);
-
-CREATE TYPE dataset_type_enum AS ENUM (
+CREATE TYPE dataset_name_enum AS ENUM (
     'education', 'healthcare', 'housing'
 );
 
-CREATE TYPE metric_type_enum AS ENUM (
-    'roc_auc', 'accuracy', 'precision'
-);
-
 CREATE TYPE split_method_enum AS ENUM (
-    'stratified_k_fold', 'k_fold'
+    'StratifiedKFold', 'KFold', 'train_test_split'
 );
 
-CREATE TABLE experiment_models (
-    model_id SERIAL PRIMARY KEY,
-    model_type model_type_enum NOT NULL,
+CREATE TABLE experiment_outputs (
+    experiment_output_id SERIAL PRIMARY KEY,
+    experiment_group_id VARCHAR(64) NOT NULL,
+    experiment_config_name VARCHAR(64) NOT NULL,
+    dataset_name dataset_name_enum NOT NULL,
+    model_type char(3) NOT NULL,
+    model_parameters JSONB NOT NULL,
     split_seed INTEGER NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    dataset_type dataset_type_enum NOT NULL,
-    k_threshold_percentage INTEGER,
-    metric_type metric_type_enum NOT NULL,
-    model_parameters JSONB NOT NULL,
+    metric_name VARCHAR(64) NOT NULL,
+    metric_k INTEGER,
+    metric_score DECIMAL NOT NULL,
     split_method split_method_enum NOT NULL,
-    split_n INTEGER NOT NULL,
-    sub_group VARCHAR(64) NOT NULL,
-    score DECIMAL NOT NULL
+    split_num_fold INTEGER CHECK(split_num_fold > 0),
+    split_num INTEGER NOT NULL,
+    sub_group JSONB,
 );

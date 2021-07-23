@@ -1,1 +1,7 @@
+# dotfiles
 .vscode/
+.DS_Store
+
+# log directory
+scripts/logs/*
+!scripts/logs/.gitkeep 

@@ -12,6 +12,6 @@
         "LR": { "penalty": ["l1","l2"], "C": [0.1, 1, 10]},
         "DT": { "criterion": ["gini", "entropy"], "max_depth": [1,2,5], "max_features": ["sqrt","log2"] }       
     },
-    "save_to_db": false,
+    "save_to_db": true,
     "POSTGRES_ADDRESS": "cs003-ib0"
 }

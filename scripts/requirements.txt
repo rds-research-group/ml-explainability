@@ -1,5 +1,6 @@
 jupyter
 pandas
+yaml
 matplotlib
 scipy
 scikit-learn

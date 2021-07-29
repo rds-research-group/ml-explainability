@@ -20,5 +20,5 @@ sbatch --mail-user=$1 --time=$3 --output=$SCRATCH/logs/postgres-%J.log postgresq
 
 echo "****** Starting jupyter notebook slurm job ******"
 cd -
-mkdir -p logs
+mkdir -p $HOME/ml-explainability/scripts/logs
 sbatch --mail-user=$1 --time=$3 --output=$HOME/ml-explainability/scripts/logs/jupyter-notebook-%J.log notebook.sbatch $2

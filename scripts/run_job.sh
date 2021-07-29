@@ -10,10 +10,10 @@ pip install --no-index --upgrade pip
 pip install -U jupyter
 
 echo "****** Convert notebook file to script ******"
-jupyter nbconvert --to script $HOME/scripts/$2.ipynb
+jupyter nbconvert --to script $HOME/ml-explainability/$2.ipynb
 
 echo "****** Starting postgres slurm job ******"
-cp $HOME/scripts/postgresql.sbatch $SCRATCH/postgresql.sbatch
+cp $HOME/ml-explainability/scripts/postgresql.sbatch $SCRATCH/postgresql.sbatch
 cd $SCRATCH
 mkdir -p logs
 sbatch --mail-user=$1 --time=$3 --output=$SCRATCH/logs/postgres-%J.log postgresql.sbatch
@@ -21,4 +21,4 @@ sbatch --mail-user=$1 --time=$3 --output=$SCRATCH/logs/postgres-%J.log postgresq
 echo "****** Starting jupyter notebook slurm job ******"
 cd -
 mkdir -p logs
-sbatch --mail-user=$1 --time=$3 --output=$HOME/scripts/logs/jupyter-notebook-%J.log notebook.sbatch
+sbatch --mail-user=$1 --time=$3 --output=$HOME/ml-explainability/scripts/logs/jupyter-notebook-%J.log notebook.sbatch $2

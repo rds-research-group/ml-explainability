@@ -4,4 +4,6 @@
 
 # log directory
 scripts/logs/*
-!scripts/logs/.gitkeep 
+
+# generated script
+pipeline_*.py

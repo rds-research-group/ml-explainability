@@ -1,3 +1,7 @@
+DROP TABLE if exists experiment_outputs;
+DROP TYPE if exists dataset_name_enum;
+DROP TYPE if exists split_method_enum;
+
 SET timezone = 'America/New_York';
 
 CREATE TYPE dataset_name_enum AS ENUM (
@@ -23,5 +27,5 @@ CREATE TABLE experiment_outputs (
     split_seed INTEGER NOT NULL,
     split_num_fold INTEGER CHECK(split_num_fold > 0),
     split_num INTEGER NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

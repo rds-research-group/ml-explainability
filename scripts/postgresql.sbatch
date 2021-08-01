@@ -8,6 +8,7 @@
 #SBATCH --mem-per-cpu=8GB
 #SBATCH --dependency=singleton
 
+srun echo $SLURM_NODELIST > postgres_node.txt
 export DB_DIR=$SCRATCH/db
 
 module purge

@@ -26,5 +26,5 @@
     }
   },
   "save_to_db": true,
-  "POSTGRES_ADDRESS": "cs003-ib0"
+  "postgres_nodelist": "cs118"
 }

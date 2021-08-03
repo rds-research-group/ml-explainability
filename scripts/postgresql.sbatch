@@ -8,7 +8,8 @@
 #SBATCH --mem-per-cpu=8GB
 #SBATCH --dependency=singleton
 
-export DB_DIR=$SCRATCH/db
+srun echo $SLURM_NODELIST > postgres_node.txt
+export DB_DIR = '/scratch/isk273/db'
 
 module purge
 module load postgresql/intel/13.2

@@ -13,10 +13,11 @@ echo "****** Convert notebook file to script ******"
 jupyter nbconvert --to script $HOME/ml-explainability/$2.ipynb
 
 echo "****** Starting postgres slurm job ******"
-cp $HOME/ml-explainability/scripts/postgresql.sbatch $SCRATCH/postgresql.sbatch
-cd $SCRATCH
+export SCRATCH_DIR = '/scratch/isk273/'
+cp $HOME/ml-explainability/scripts/postgresql.sbatch $SCRATCH_DIR/postgresql.sbatch
+cd $SCRATCH_DIR
 mkdir -p logs
-sbatch --mail-user=$1 --time=$3 --output=$SCRATCH/logs/postgres-%J.log postgresql.sbatch
+sbatch --mail-user=$1 --time=$3 --output=$SCRATCH_DIR/logs/postgres-%J.log postgresql.sbatch
 
 echo "****** Starting jupyter notebook slurm job ******"
 cd -

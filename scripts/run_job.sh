@@ -10,10 +10,10 @@ pip install --no-index --upgrade pip
 pip install -U jupyter
 
 echo "****** Convert notebook file to script ******"
-jupyter nbconvert --to script $HOME/ml-explainability/$2.ipynb
+jupyter nbconvert --to python $HOME/ml-explainability/$2.ipynb
 
 echo "****** Starting postgres slurm job ******"
-export SCRATCH_DIR = '/scratch/isk273/'
+export SCRATCH_DIR='/scratch/isk273'
 cp $HOME/ml-explainability/scripts/postgresql.sbatch $SCRATCH_DIR/postgresql.sbatch
 cd $SCRATCH_DIR
 mkdir -p logs

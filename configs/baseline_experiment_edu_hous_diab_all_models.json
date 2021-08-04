@@ -37,14 +37,14 @@
   "split_random_states": [42, 13, 100],
   "hyperparameters": {
     "LR": {
-      "penalty": ["l1", "2"],
+      "penalty": ["l1", "l2"],
       "C": [0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10],
       "class_weight": [null, "balanced"]
     },
     "DT": {
       "criterion": ["gini", "entropy"],
       "max_depth": [1, 2, 5, 10],
-      "max_features": ["sqrt", "log"]
+      "max_features": ["sqrt", "log2"]
     },
     "XGB": {
       "learning_rate": [

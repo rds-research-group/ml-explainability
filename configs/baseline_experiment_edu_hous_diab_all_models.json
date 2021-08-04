@@ -44,7 +44,7 @@
     "DT": {
       "criterion": ["gini", "entropy"],
       "max_depth": [1, 2, 5, 10],
-      "max_features": ["sqrt", "log"]
+      "max_features": ["sqrt", "log2"]
     },
     "XGB": {
       "learning_rate": [

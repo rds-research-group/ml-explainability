@@ -2,6 +2,36 @@
 
 Shared drive files [here](https://drive.google.com/drive/folders/17yneYJ8NzbSN5tS2RLCpaxA35sVmoP5h?usp=sharing).
 
+## First time running jobs on HPC
+
+1. First complete singularity and conda setup
+2. In your `$HOME` directory run `git clone git@github.com:rds-research-group/ml-explainability.git`
+3. `cd ml-explainability`
+4. `./scripts/run_job.sh <EMAIL> <NOTEBOOK_FILE_NAME> <JOB_TIME>`
+
+## Testing jupyter notebooks locally
+
+1. Start a slurm interactive job
+2. Start a singularity container
+3. In the container run `jupyter notebook --no-browser --port 8870` (make sure container has deps)
+4. On local machine run `ssh -NfL 8870:localhost:8870 <NET_ID>@greene.hpc.nyu.edu`
+5. Open brower tab with localhost address/port (in container log statements)
+
+## Connecting to a postgres database job
+
+1. Make sure there is a slurm job running postgres (run `run_job.sh`)
+2. Start a new interactive job `srun -c8 --nodes=1 -t1:00:00 --job-name=db --mem=4GB --pty /bin/bash`
+3. Load postgres module `module load postgresql/intel/13.2`
+4. Run `psql -h cs011 explainability_db`, `cs011` is the slurm job running postgres
+5. Enter postgres db password
+
+## Tunneling to a slurm job node
+
+Run `ssh -t -t <NET_ID>@greene.hpc.nyu.edu -L <PORT>:localhost:<PORT> ssh <NODELIST> -L <PORT>:localhost:<PORT>`
+
+- Common ports **postgres:** 5432 and **jupyter:** 8870
+- Run `squeue -u $USER` to find `<NODELIST>`
+
 ## Singularity and conda setup
 
 1. Check to see singularity is installed `which singularity`
@@ -29,15 +59,7 @@ Shared drive files [here](https://drive.google.com/drive/folders/17yneYJ8NzbSN5t
 14. Install additional dependencies in singularity container `pip install jupyter pandas matplotlib scipy scikit-learn seaborn`
 15. Profit
 
-## Testing jupyter notebooks locally
+### Helpful slurm commands
 
-1. In container run `jupyter notebook --no-browser --port 8870`
-2. On local machine run `ssh -NfL 8870:localhost:8870 <NET_ID>@greene.hpc.nyu.edu`
-3. Open brower tab with localhost address/port (in container log statements)
-
-## Running jobs on HPC
-
-1. Login to HPC
-2. `git clone git@github.com:rds-research-group/ml-explainability.git`
-3. `cd ml-explainability`
-4. `./scripts/run_job.sh <EMAIL> <NOTEBOOK_FILE> <JOB_TIME>`
+- Cancel all jobs `squeue -u $USER | awk '{print $1}' | tail -n+2 | xargs scancel`, Ex. `squeue -u $USER -n postgres` to cancel jobs named postgres
+- Get details into your jobs `sacct --format=User,JobID,Jobname,partition,state,time,start,end,elapsed,AveCPU,MaxRss,MaxVMSize,nnodes,ncpus,nodelist -u $USER`

@@ -24,11 +24,7 @@
     "recall_score@10",
     "recall_score@25"
   ],
-  "split_methods": [
-    "StratifiedKFold@5",
-    "KFold@5",
-    "train_test_split@25",
-  ],
+  "split_methods": ["StratifiedKFold@5", "KFold@5", "train_test_split@25"],
   "split_random_states": [42, 13, 100],
   "hyperparameters": {
     "LR": {

@@ -3,10 +3,9 @@
 #SBATCH --job-name=jupyter
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --nodes=1
+#SBATCH --mem=16GB
+#SBATCH --cpus-per-task=40
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem-per-cpu=64GB
-#SBATCH --wait-all-nodes=1
 
 module purge
 module load python/intel/3.8.6

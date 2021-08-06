@@ -17,9 +17,10 @@ export SCRATCH_DIR='/scratch/isk273'
 cp $HOME/ml-explainability/scripts/postgresql.sbatch $SCRATCH_DIR/postgresql.sbatch
 cd $SCRATCH_DIR
 mkdir -p logs
-sbatch --mail-user=$1 --time=$3 --output=$SCRATCH_DIR/logs/postgres-%J.log postgresql.sbatch
+POSTGRES_JOB_ID=$(sbatch --parsable --mail-user=$1 --time=$3 --output=$SCRATCH_DIR/logs/postgres-%J.log postgresql.sbatch)
+echo "postgres_job_id:" ${POSTGRES_JOB_ID}
 
 echo "****** Starting jupyter notebook slurm job ******"
 cd -
 mkdir -p $HOME/ml-explainability/scripts/logs
-sbatch --mail-user=$1 --time=$3 --output=$HOME/ml-explainability/scripts/logs/jupyter-notebook-%J.log notebook.sbatch $2
+sbatch --dependency=after:$POSTGRES_JOB_ID --mail-user=$1 --time=$3 --output=$HOME/ml-explainability/scripts/logs/jupyter-notebook-%J.log notebook.sbatch $2

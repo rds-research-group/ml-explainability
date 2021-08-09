@@ -6,4 +6,4 @@
 scripts/logs/*
 
 # generated script
-pipeline_*.py
+pipeline*.py

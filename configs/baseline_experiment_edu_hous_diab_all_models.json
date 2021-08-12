@@ -1,19 +1,19 @@
 {
-  "datasets": ["education", "housing", "diabetes"],
+  "datasets": ["education", "housing", "healthcare"],
   "X": {
     "education": "matrices/portuguese_students/portuguese_students_X.csv",
     "housing": "matrices/housing_prices/X.csv",
-    "diabetes": "matrices/diabetes/diabetes_X.csv"
+    "healthcare": "matrices/diabetes/diabetes_X.csv"
   },
   "y": {
     "education": "matrices/portuguese_students/portuguese_students_y.csv",
     "housing": "matrices/housing_prices/y.csv",
-    "diabetes": "matrices/diabetes/diabetes_y.csv"
+    "healthcare": "matrices/diabetes/diabetes_y.csv"
   },
   "sub_groups": {
     "education": ["sex_female"],
-    "diabetes": ["is_male"],
-    "housing": ["waterfront"]
+    "housing": ["waterfront"],
+    "healthcare": ["is_male"]
   },
   "metrics": [
     "roc_auc_score",

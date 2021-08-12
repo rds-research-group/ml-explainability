@@ -1,19 +1,13 @@
 {
   "datasets": ["education"],
   "X": {
-    "education": "matrices/portuguese_students/portuguese_students_X.csv",
-    "housing": "matrices/housing_prices/X.csv",
-    "diabetes": "matrices/diabetes/diabetes_X.csv"
+    "education": "matrices/portuguese_students/portuguese_students_X.csv"
   },
   "y": {
-    "education": "matrices/portuguese_students/portuguese_students_y.csv",
-    "housing": "matrices/housing_prices/y.csv",
-    "diabetes": "matrices/diabetes/diabetes_y.csv"
+    "education": "matrices/portuguese_students/portuguese_students_y.csv"
   },
   "sub_groups": {
-    "education": [],
-    "diabetes": [],
-    "housing": []
+    "education": []
   },
   "metrics": [
     "roc_auc_score",
@@ -28,7 +22,7 @@
   "split_random_states": [1729],
   "hyperparameters": {
     "RF": {
-      "n_estimators": [50,100,500],
+      "n_estimators": [50, 100, 500],
       "max_depth": [250, 500, 750],
       "max_features": [null],
       "min_samples_split": [2, 10, 20, 50]

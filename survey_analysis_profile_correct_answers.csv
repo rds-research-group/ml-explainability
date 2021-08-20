@@ -1,17 +1,17 @@
-model,profile_number,q1_correct_answer
-int,1,Fail
-int,2,Pass
-int,3,Fail
-int,4,Pass
-lr,1,Fail
-lr,2,Pass
-lr,3,Fail
-lr,4,Pass
-shap,1,Fail
-shap,2,Pass
-shap,3,Fail
-shap,4,Pass
-no_shap,1,Fail
-no_shap,2,Pass
-no_shap,3,Fail
-no_shap,4,Pass
+model,profile_number,q1_correct_answer,q2_correct_answer
+dt,1,Fail,"Grade,Absences,Has romantic relationship"
+dt,2,Pass,"Grade,Absences,Has romantic relationship"
+dt,3,Fail,"Grade,Absences,Has romantic relationship"
+dt,4,Pass,"Grade,Absences,Has romantic relationship"
+lr,1,Fail,"Grade,Absences,Has romantic relationship"
+lr,2,Pass,"Grade,Absences,Has romantic relationship"
+lr,3,Fail,"Grade,Absences,Has romantic relationship"
+lr,4,Pass,"Grade,Absences,Has romantic relationship"
+shap,1,Fail,"Grade,Absences,Has romantic relationship"
+shap,2,Pass,"Grade,Absences,Has romantic relationship"
+shap,3,Fail,"Grade,Absences,Has romantic relationship"
+shap,4,Pass,"Grade,Absences,Has romantic relationship"
+no_shap,1,Fail,"Grade,Absences,Has romantic relationship"
+no_shap,2,Pass,"Grade,Absences,Has romantic relationship"
+no_shap,3,Fail,"Grade,Absences,Has romantic relationship"
+no_shap,4,Pass,"Grade,Absences,Has romantic relationship"

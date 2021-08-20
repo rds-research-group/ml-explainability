@@ -1,5 +1,5 @@
 {
-  "datasets": ["education", "housing", "healthcare"],
+  "datasets": ["education"],
   "X": {
     "education": "matrices/portuguese_students/portuguese_students_X.csv",
     "housing": "matrices/housing_prices/X.csv",

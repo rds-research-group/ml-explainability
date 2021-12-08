@@ -1,5 +1,5 @@
 {
-  "healthcare": ["druguse"],
+  "datasets": ["healthcare"],
   "X": {
     "healthcare": "matrices/drug_use/X.csv"
   },

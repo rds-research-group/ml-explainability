@@ -1,6 +1,6 @@
 # !/bin/bash
 echo "****** Getting latest changes from GitHub ******"
-git pull --ff-only origin main
+# git pull --ff-only origin main
 
 echo "****** Installing dependencies ******"
 module purge

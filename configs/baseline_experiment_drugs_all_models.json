@@ -1,13 +1,13 @@
 {
   "datasets": ["druguse"],
   "X": {
-    "druguse": "matrices/drug_use/X.csv",
+    "druguse": "matrices/drug_use/X.csv"
   },
   "y": {
-    "druguse": "matrices/drug_use/y.csv",
+    "druguse": "matrices/drug_use/y.csv"
   },
   "sub_groups": {
-     "druguse": [],
+    "druguse": []
   },
   "metrics": [
     "roc_auc_score",

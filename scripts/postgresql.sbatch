@@ -9,7 +9,7 @@
 #SBATCH --dependency=singleton
 
 srun echo $SLURM_NODELIST > postgres_node.txt
-export DB_DIR='/scratch/alb9742/db'
+export DB_DIR='/scratch/isk273/db'
 
 module purge
 module load postgresql/intel/13.2

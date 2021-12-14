@@ -7,3 +7,9 @@ scripts/logs/*
 
 # generated script
 pipeline*.py
+
+# confidential data files
+housing_survey_data_090421.csv
+education_survey_data_090421.csv
+housing_survey_data_102621.csv
+education_survey_data_102621.csv

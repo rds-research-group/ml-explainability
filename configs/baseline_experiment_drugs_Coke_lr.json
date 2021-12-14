@@ -1,0 +1,40 @@
+{
+  "datasets": ["healthcare"],
+  "X": {
+    "healthcare": "matrices/drug_use/X_no_Coke.csv"
+  },
+  "y": {
+    "healthcare": "matrices/drug_use/y_Coke.csv"
+  },
+  "sub_groups": {
+    "healthcare": []
+  },
+  "metrics": [
+    "roc_auc_score",
+    "f1_score",
+    "accuracy_score",
+    "accuracy_score@10",
+    "accuracy_score@25",
+    "precision_score@10",
+    "precision_score@25",
+    "recall_score@10",
+    "recall_score@25"
+  ],
+  "split_methods": [
+    "StratifiedKFold@5",
+    "StratifiedKFold@10",
+    "KFold@5",
+    "KFold@10",
+    "train_test_split@25",
+    "train_test_split@10"
+  ],
+  "split_random_states": [42, 13, 100],
+  "hyperparameters": {
+    "LR": {
+      "penalty": ["l1", "l2"],
+      "C": [0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10],
+      "class_weight": [null, "balanced"]
+    }
+  },
+  "save_to_db": false
+}

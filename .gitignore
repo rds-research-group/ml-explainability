@@ -7,3 +7,7 @@ scripts/logs/*
 
 # generated script
 pipeline*.py
+
+# ignore sensitive files
+analysis/analysis_data.csv
+analysis/education_analysis_data.csv

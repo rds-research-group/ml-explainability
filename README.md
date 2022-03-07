@@ -63,3 +63,8 @@ Run `ssh -t -t <NET_ID>@greene.hpc.nyu.edu -L <PORT>:localhost:<PORT> ssh <NODEL
 
 - Cancel all jobs `squeue -u $USER | awk '{print $1}' | tail -n+2 | xargs scancel`, Ex. `squeue -u $USER -n postgres` to cancel jobs named postgres
 - Get details into your jobs `sacct --format=User,JobID,Jobname,partition,state,time,start,end,elapsed,AveCPU,MaxRss,MaxVMSize,nnodes,ncpus,nodelist -u $USER`
+
+### NYU HPC (updating / archiving files)
+
+- Touch all files on HPC `find . -exec touch -c {} \;`
+- Zip scratch directory `zip -r "scratch-$(date +"%Y-%m-%d").zip" /scratch/<NET_ID>`
